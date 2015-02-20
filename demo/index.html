@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NavMenuComponent test</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="jquery.mobile-1.4.5.css">
+    </head>
+
+    <body>
+        <h1>NavMenuComponent test</h1>
+
+        <nav>
+            <ol class="primary-nav">
+                <li data-submenu="#submenu1">
+                    <a href="#">Menu 1</a>
+                    <ol class="submenu" id="submenu1">
+                        <li data-submenu="#submenu1_1">
+                            <a href="#">Menu 1 sub 1</a>
+
+                            <ol class="submenu" id="submenu1_1">
+                                <li data-submenu="#submenu1_1_1">
+                                    <a href="#">Menu 1 sub 1 sub 1</a>
+
+                                    <ol class="submenu" id="submenu1_1_1">
+                                        <li>
+                                            <a href="#">Menu 1 sub 1 sub 1 sub 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Menu 1 sub 1 sub 1 sub 2</a>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    <a href="#">Menu 1 sub 1 sub 2</a>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <a href="#">Menu 1 sub 2</a>
+                        </li>
+                    </ol>
+                </li>
+                <li data-submenu="#submenu2">
+                    <a href="#">Menu 2</a>
+                    <ol class="submenu" id="submenu2">
+                        <li>
+                            <a href="#">Menu 2 sub 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Menu 2 sub 2</a>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </nav>
+
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="../dist/index.js"></script>
+
+        <script>
+            new jsWorkshop.NavMenuComponent($('body'), $('.primary-nav')).initialize();
+        </script>
+    </body>
+</html>

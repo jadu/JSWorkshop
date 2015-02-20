@@ -1,0 +1,44 @@
+{
+  "name": "js-workshop",
+  "version": "0.1.0",
+  "description": "Jadu JS workshop.",
+  "main": "index.js",
+  "scripts": {
+    "blanket": {
+      "pattern": "*"
+    },
+    "browserify-release": "browserify index --standalone=jsWorkshop --debug | uglifyjs > dist/index.js",
+    "browserify-test": "browserify tests/index --standalone=jsWorkshop --debug --outfile dist/test.js",
+    "docs": "doxx --source src --target docs",
+    "test": "npm run browserify-test && mocha-phantomjs --path ./node_modules/.bin/phantomjs tests/index.html --reporter spec"
+  },
+  "keywords": [
+    "jadu"
+  ],
+  "author": "Jadu Ltd",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^6.3.3",
+    "browserify-shim": "^3.8.0",
+    "chai": "^1.10.0",
+    "doxx": "^1.2.5",
+    "jquery": "^1.11.0",
+    "mocha": "^2.0.1",
+    "mocha-phantomjs": "^3.5.1",
+    "phantomjs": "^1.9.12",
+    "require-dir": "^0.1.0",
+    "sinon": "^1.12.1",
+    "sinon-chai": "^2.6.0",
+    "store": "^1.3.17",
+    "uglify-js": "^2.4.16"
+  },
+  "dependencies": {},
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "jquery": "global:$"
+  }
+}
