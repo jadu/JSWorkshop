@@ -16,6 +16,7 @@ function NavMenuComponent($body, $menu) {
 
 NavMenuComponent.prototype.initialize = function () {
     var component = this,
+        $body = component.$body,
         $menu = component.$menu,
         $openSubmenu = $();
 
@@ -34,7 +35,7 @@ NavMenuComponent.prototype.initialize = function () {
         event.preventDefault();
     });
 
-    component.$body.click(function () {
+    $body.click(function () {
         // Close all parent submenus of the open one
         $openSubmenu.parents('[data-submenu]').each(function () {
             var selector = $(this).data('submenu'),
