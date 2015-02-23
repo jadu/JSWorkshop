@@ -49,5 +49,20 @@ describe('DOMKeyListener', function () {
                 expect(this.controls.moveRight).to.have.been.calledTwice;
             });
         });
+
+        describe('when the up key is pressed', function () {
+            it('should ask the controls to move up once when pressed once', function () {
+                this.$document.trigger($.Event('keydown', {keyCode: 38}));
+
+                expect(this.controls.moveUp).to.have.been.calledOnce;
+            });
+
+            it('should ask the controls to move up twice when pressed twice', function () {
+                this.$document.trigger($.Event('keydown', {keyCode: 38}));
+                this.$document.trigger($.Event('keydown', {keyCode: 38}));
+
+                expect(this.controls.moveUp).to.have.been.calledTwice;
+            });
+        });
     });
 });

@@ -7,6 +7,7 @@
 'use strict';
 
 var LEFT_KEY = 37,
+    UP_KEY = 38,
     RIGHT_KEY = 39,
     _ = require('lodash');
 
@@ -26,6 +27,8 @@ _.extend(DOMKeyListener.prototype, {
                 listener.controls.moveLeft();
             } else if (event.keyCode === RIGHT_KEY) {
                 listener.controls.moveRight();
+            } else if (event.keyCode === UP_KEY) {
+                listener.controls.moveUp();
             }
         });
     }
