@@ -43,8 +43,8 @@ describe('BoundingBox', function () {
             },
             'should return false when box is out to right of other box': {
                 boxParameters: {
-                    x: 200,
-                    y: 100,
+                    x: 130,
+                    y: 200,
                     width: 20,
                     height: 20
                 },
@@ -130,7 +130,22 @@ describe('BoundingBox', function () {
                     height: 20
                 },
                 expectedResult: true
-            }
+            },
+            'should return true when box overlaps right-side of other box by 1px': {
+                boxParameters: {
+                    x: 119,
+                    y: 200,
+                    width: 20,
+                    height: 20
+                },
+                otherBoxParameters: {
+                    x: 100,
+                    y: 200,
+                    width: 20,
+                    height: 20
+                },
+                expectedResult: true
+            },
         }, function (scenario, description) {
             it(description, function () {
                 var box = new BoundingBox(

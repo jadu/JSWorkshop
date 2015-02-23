@@ -45,7 +45,7 @@ _.extend(BoundingBox.prototype, {
         }
 
         // Box is out to right of otherBox
-        if (box.getLeft() + box.getWidth() > otherBox.getLeft() + otherBox.getWidth()) {
+        if (box.getLeft() > otherBox.getLeft() + otherBox.getWidth()) {
             return false;
         }
 
