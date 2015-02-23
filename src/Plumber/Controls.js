@@ -8,9 +8,10 @@
 
 var _ = require('lodash');
 
-function Controls(xDelta) {
+function Controls(xDelta, yDelta) {
     this.velocity = null;
     this.xDelta = xDelta;
+    this.yDelta = yDelta;
 }
 
 _.extend(Controls.prototype, {
@@ -28,6 +29,12 @@ _.extend(Controls.prototype, {
         var controls = this;
 
         controls.velocity.increaseX(controls.xDelta);
+    },
+
+    moveUp: function () {
+        var controls = this;
+
+        controls.velocity.increaseY(controls.yDelta);
     }
 });
 

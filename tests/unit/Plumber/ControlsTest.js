@@ -12,7 +12,7 @@ var Controls = require('../../../src/Plumber/Controls'),
 describe('Controls', function () {
     beforeEach(function () {
         this.velocity = sinon.createStubInstance(Velocity);
-        this.controls = new Controls(2);
+        this.controls = new Controls(2, 4);
 
         this.controls.control(this.velocity);
     });
@@ -77,6 +77,38 @@ describe('Controls', function () {
                 this.controls.moveRight();
 
                 expect(this.velocity.increaseX).to.always.have.been.calledWith(2);
+            });
+        });
+    });
+
+    describe('moveUp()', function () {
+        describe('when called once', function () {
+            it('should increase the Y-velocity once', function () {
+                this.controls.moveUp();
+
+                expect(this.velocity.increaseY).to.have.been.calledOnce;
+            });
+
+            it('should increase the Y-velocity by 4', function () {
+                this.controls.moveUp();
+
+                expect(this.velocity.increaseY).to.have.been.calledWith(4);
+            });
+        });
+
+        describe('when called twice', function () {
+            it('should increase the Y-velocity twice', function () {
+                this.controls.moveUp();
+                this.controls.moveUp();
+
+                expect(this.velocity.increaseY).to.have.been.calledTwice;
+            });
+
+            it('should have increased the Y-velocity by 4 twice', function () {
+                this.controls.moveUp();
+                this.controls.moveUp();
+
+                expect(this.velocity.increaseY).to.always.have.been.calledWith(4);
             });
         });
     });
