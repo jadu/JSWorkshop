@@ -15,7 +15,7 @@ describe('CollisionDetector', function () {
         this.character = sinon.createStubInstance(Character);
         this.pipe = sinon.createStubInstance(Pipe);
 
-        this.detector = new CollisionDetector();
+        this.detector = new CollisionDetector(200);
     });
 
     describe('detect()', function () {
@@ -39,6 +39,15 @@ describe('CollisionDetector', function () {
             this.detector.detect([this.pipe], this.character);
 
             expect(this.character.setLeft).not.to.have.been.called;
+        });
+
+        it('should move the character back up when its bottom edge is below ground level', function () {
+            this.character.getTop.returns(170);
+            this.character.getHeight.returns(40);
+
+            this.detector.detect([this.pipe], this.character);
+
+            expect(this.character.setTop).to.have.been.calledWith(160);
         });
     });
 });

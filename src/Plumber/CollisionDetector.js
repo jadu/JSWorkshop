@@ -8,8 +8,8 @@
 
 var _ = require('lodash');
 
-function CollisionDetector() {
-
+function CollisionDetector(groundY) {
+    this.groundY = groundY;
 }
 
 _.extend(CollisionDetector.prototype, {
@@ -21,6 +21,10 @@ _.extend(CollisionDetector.prototype, {
                 }
             }
         });
+
+        if (character.getTop() > this.groundY - character.getHeight()) {
+            character.setTop(this.groundY - character.getHeight());
+        }
     }
 });
 
