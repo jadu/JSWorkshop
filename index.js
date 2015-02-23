@@ -6,8 +6,8 @@
 
 'use strict';
 
-var NavMenuComponent = require('./src/Component/NavMenuComponent');
+var Game = require('./src/Plumber/Game');
 
 module.exports = {
-    NavMenuComponent: NavMenuComponent
+    Game: Game
 };

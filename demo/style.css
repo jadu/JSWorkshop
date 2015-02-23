@@ -13,12 +13,27 @@ body {
     height: 100%;
 }
 
-.submenu {
-    padding-left: 2em;
-    list-style: disc;
-    display: none;
+.surface {
+    position: relative;
+    background: skyblue;
+
+    width: 800px;
+    height: 600px;
+
+    overflow: hidden;
 }
 
-.submenu--visible {
-    display: block;
+.ground {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+
+    background: brown;
+}
+
+.surface .pipe {
+    position: absolute;
+    background: green;
 }

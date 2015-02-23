@@ -25,6 +25,14 @@ window.it = it;
 window.sinon = sinon;
 
 require('./unit/Component/NavMenuComponentTest');
+require('./unit/Plumber/BoundingBoxFactoryTest');
+require('./unit/Plumber/BoundingBoxTest');
+require('./unit/Plumber/PipeFactoryTest');
+require('./unit/Plumber/PipeTest');
+require('./unit/Plumber/PlumberTest');
+require('./unit/Plumber/RendererTest');
+require('./unit/Plumber/RNGTest');
+require('./unit/Plumber/WorldTest');
 
 if (typeof mochaPhantomJS !== 'undefined') {
     mochaPhantomJS.run();
