@@ -7,14 +7,26 @@
 'use strict';
 
 var BoundingBoxFactory = require('../../../src/Plumber/BoundingBoxFactory'),
-    CharacterFactory = require('../../../src/Plumber/CharacterFactory');
+    CharacterFactory = require('../../../src/Plumber/CharacterFactory'),
+    Controls = require('../../../src/Plumber/Controls'),
+    Momentum = require('../../../src/Plumber/Momentum'),
+    VelocityFactory = require('../../../src/Plumber/VelocityFactory');
 
 describe('CharacterFactory', function () {
     beforeEach(function () {
         this.boundingBoxFactory = sinon.createStubInstance(BoundingBoxFactory);
         this.Character = sinon.stub();
+        this.controls = sinon.createStubInstance(Controls);
+        this.momentum = sinon.createStubInstance(Momentum);
+        this.velocityFactory = sinon.createStubInstance(VelocityFactory);
 
-        this.factory = new CharacterFactory(this.boundingBoxFactory, this.Character);
+        this.factory = new CharacterFactory(
+            this.boundingBoxFactory,
+            this.velocityFactory,
+            this.momentum,
+            this.controls,
+            this.Character
+        );
     });
 
     describe('create()', function () {

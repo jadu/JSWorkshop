@@ -27,12 +27,16 @@ window.sinon = sinon;
 require('./unit/Component/NavMenuComponentTest');
 require('./unit/Plumber/BoundingBoxFactoryTest');
 require('./unit/Plumber/BoundingBoxTest');
-require('./unit/Plumber/CharacterTest');
 require('./unit/Plumber/CharacterFactoryTest');
+require('./unit/Plumber/CharacterTest');
+require('./unit/Plumber/ControlsTest');
+require('./unit/Plumber/DOMKeyListenerTest');
 require('./unit/Plumber/PipeFactoryTest');
 require('./unit/Plumber/PipeTest');
 require('./unit/Plumber/RendererTest');
 require('./unit/Plumber/RNGTest');
+require('./unit/Plumber/VelocityFactoryTest');
+require('./unit/Plumber/VelocityTest');
 require('./unit/Plumber/WorldTest');
 
 if (typeof mochaPhantomJS !== 'undefined') {

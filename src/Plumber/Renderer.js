@@ -19,6 +19,8 @@ _.extend(Renderer.prototype, {
         var renderer = this,
             $surface = renderer.$surface;
 
+        $surface.find(':not(.ground)').remove();
+
         _.each(renderer.world.getPipes(), function (pipe) {
             var $pipe = $('<div></div>').addClass('pipe');
 
@@ -27,6 +29,16 @@ _.extend(Renderer.prototype, {
             $pipe.offset({left: pipe.getLeft(), top: pipe.getTop()});
 
             $surface.append($pipe);
+        });
+
+        _.each(renderer.world.getCharacters(), function (character) {
+            var $character = $('<div></div>').addClass('character');
+
+            $character.height(character.getHeight());
+            $character.width(character.getWidth());
+            $character.offset({left: character.getLeft(), top: character.getTop()});
+
+            $surface.append($character);
         });
     }
 });

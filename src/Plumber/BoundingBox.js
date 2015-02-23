@@ -60,6 +60,10 @@ _.extend(BoundingBox.prototype, {
         }
 
         return true;
+    },
+
+    setLeft: function (left) {
+        this.x = left;
     }
 });
 

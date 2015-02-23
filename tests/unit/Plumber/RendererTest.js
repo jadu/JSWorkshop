@@ -74,5 +74,13 @@ describe('Renderer', function () {
                 expect(this.$surface.find('.pipe:eq(1)').height()).to.equal(20);
             });
         });
+
+        it('should remove any existing pipes from the surface', function () {
+            this.$surface.append('<div class="pipe"></div>');
+
+            this.renderer.render();
+
+            expect(this.$surface.find('.pipe')).to.have.length(0);
+        });
     });
 });

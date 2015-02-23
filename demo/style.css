@@ -23,7 +23,7 @@ body {
     overflow: hidden;
 }
 
-.ground {
+.surface .ground {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -36,4 +36,9 @@ body {
 .surface .pipe {
     position: absolute;
     background: green;
+}
+
+.surface .character {
+    position: absolute;
+    background: red;
 }
