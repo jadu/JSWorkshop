@@ -33,6 +33,15 @@ describe('Velocity', function () {
 
             expect(this.boundingBox.setLeft).to.have.been.calledWith(18);
         });
+
+        it('should set the BoundingBox\'s top to 18 when current top is 20 and Y-velocity is 4', function () {
+            this.boundingBox.getTop.returns(20);
+            this.velocity.increaseY(4);
+
+            this.velocity.act();
+
+            expect(this.boundingBox.setTop).to.have.been.calledWith(16);
+        });
     });
 
     describe('decay()', function () {
@@ -44,6 +53,16 @@ describe('Velocity', function () {
             this.velocity.act();
 
             expect(this.boundingBox.setLeft).to.have.been.calledWith(110);
+        });
+
+        it('should apply the coefficient to the Y-velocity', function () {
+            this.boundingBox.getTop.returns(100);
+            this.velocity.increaseY(20);
+
+            this.velocity.decay(0.5);
+            this.velocity.act();
+
+            expect(this.boundingBox.setTop).to.have.been.calledWith(90);
         });
     });
 });
