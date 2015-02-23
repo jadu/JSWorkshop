@@ -8,15 +8,20 @@
 
 var _ = require('lodash');
 
-function World(pipeFactory, characterFactory, groundY) {
+function World(pipeFactory, characterFactory, collisionDetector, groundY) {
     this.characterFactory = characterFactory;
     this.characters = [];
+    this.collisionDetector = collisionDetector;
     this.groundY = groundY;
     this.pipeFactory = pipeFactory;
     this.pipes = [];
 }
 
 _.extend(World.prototype, {
+    checkCollisions: function () {
+        this.collisionDetector.detect(this.pipes, this.characters[0]);
+    },
+
     generate: function () {
         var i,
             left = 0,

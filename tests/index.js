@@ -29,6 +29,7 @@ require('./unit/Plumber/BoundingBoxFactoryTest');
 require('./unit/Plumber/BoundingBoxTest');
 require('./unit/Plumber/CharacterFactoryTest');
 require('./unit/Plumber/CharacterTest');
+require('./unit/Plumber/CollisionDetectorTest');
 require('./unit/Plumber/ControlsTest');
 require('./unit/Plumber/DOMKeyListenerTest');
 require('./unit/Plumber/PipeFactoryTest');

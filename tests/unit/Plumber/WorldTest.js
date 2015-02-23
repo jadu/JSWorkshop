@@ -7,6 +7,7 @@
 'use strict';
 
 var CharacterFactory = require('../../../src/Plumber/CharacterFactory'),
+    CollisionDetector = require('../../../src/Plumber/CollisionDetector'),
     Pipe = require('../../../src/Plumber/Pipe'),
     PipeFactory = require('../../../src/Plumber/PipeFactory'),
     World = require('../../../src/Plumber/World');
@@ -14,10 +15,35 @@ var CharacterFactory = require('../../../src/Plumber/CharacterFactory'),
 describe('World', function () {
     beforeEach(function () {
         this.characterFactory = sinon.createStubInstance(CharacterFactory);
+        this.collisionDetector = sinon.createStubInstance(CollisionDetector);
         this.pipeFactory = sinon.createStubInstance(PipeFactory);
         this.pipeFactory.create.returns(sinon.createStubInstance(Pipe));
 
-        this.world = new World(this.pipeFactory, this.characterFactory, 2000);
+        this.world = new World(this.pipeFactory, this.characterFactory, this.collisionDetector, 2000);
+    });
+
+    describe('checkCollisions()', function () {
+        it('should ask the detector to check for collisions once', function () {
+            this.world.checkCollisions();
+
+            expect(this.collisionDetector.detect).to.have.been.calledOnce;
+        });
+
+        it('should pass an array to the detector', function () {
+            this.world.checkCollisions();
+
+            expect(this.collisionDetector.detect).to.have.been.calledWith(sinon.match.array);
+        });
+
+        it('should pass the character to the detector', function () {
+            var character = {};
+            this.characterFactory.create.returns(character);
+            this.world.generate();
+
+            this.world.checkCollisions();
+
+            expect(this.collisionDetector.detect).to.have.been.calledWith(sinon.match.any, character);
+        });
     });
 
     describe('generate()', function () {

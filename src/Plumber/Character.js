@@ -27,6 +27,14 @@ _.extend(Character.prototype, {
 
     getWidth: function () {
         return this.boundingBox.getWidth();
+    },
+
+    intersectsPipe: function (pipe) {
+        return pipe.intersectsBoundingBox(this.boundingBox);
+    },
+
+    setLeft: function (left) {
+        this.boundingBox.setLeft(left);
     }
 });
 

@@ -31,6 +31,10 @@ _.extend(Pipe.prototype, {
 
     getWidth: function () {
         return this.boundingBox.getWidth();
+    },
+
+    intersectsBoundingBox: function (boundingBox) {
+        return this.boundingBox.intersectsBoundingBox(boundingBox);
     }
 });
 

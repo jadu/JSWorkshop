@@ -71,4 +71,18 @@ describe('Character', function () {
             expect(this.character.getTop()).to.equal(6);
         });
     });
+
+    describe('setLeft()', function () {
+        it('should set the BoundingBox\'s left to 4 when expected', function () {
+            this.character.setLeft(4);
+
+            expect(this.boundingBox.setLeft).to.have.been.calledWith(4);
+        });
+
+        it('should set the BoundingBox\'s left to 5 when expected', function () {
+            this.character.setLeft(5);
+
+            expect(this.boundingBox.setLeft).to.have.been.calledWith(5);
+        });
+    });
 });
