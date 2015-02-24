@@ -32,6 +32,7 @@ require('./unit/Plumber/CharacterTest');
 require('./unit/Plumber/CollisionDetectorTest');
 require('./unit/Plumber/ControlsTest');
 require('./unit/Plumber/DOMKeyListenerTest');
+require('./unit/Plumber/GravityTest');
 require('./unit/Plumber/PipeFactoryTest');
 require('./unit/Plumber/PipeTest');
 require('./unit/Plumber/RendererTest');
