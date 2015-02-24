@@ -9,10 +9,12 @@
 var EPSILON = 0.01,
     _ = require('lodash');
 
-function Velocity(boundingBox) {
+function Velocity(boundingBox, maximumXVelocity, maximumYVelocity) {
     this.boundingBox = boundingBox;
     this.xVelocity = 0;
     this.yVelocity = 0;
+    this.maximumXVelocity = maximumXVelocity;
+    this.maximumYVelocity = maximumYVelocity;
 }
 
 _.extend(Velocity.prototype, {
@@ -40,10 +42,18 @@ _.extend(Velocity.prototype, {
 
     increaseX: function (delta) {
         this.xVelocity += delta;
+
+        if (this.xVelocity > this.maximumXVelocity) {
+            this.xVelocity = this.maximumXVelocity;
+        }
     },
 
     increaseY: function (delta) {
         this.yVelocity += delta;
+
+        if (this.yVelocity > this.maximumYVelocity) {
+            this.yVelocity = this.maximumYVelocity;
+        }
     }
 });
 

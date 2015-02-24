@@ -13,7 +13,20 @@ describe('Velocity', function () {
     beforeEach(function () {
         this.boundingBox = sinon.createStubInstance(BoundingBox);
 
-        this.velocity = new Velocity(this.boundingBox);
+        this.maximumXVelocity = 20;
+        this.maximumYVelocity = 20;
+
+        this.velocity = new Velocity(this.boundingBox, this.maximumXVelocity, this.maximumYVelocity);
+    });
+
+    describe('constructor', function () {
+        it('should construct with a X-velocity of 0', function () {
+            expect(this.velocity.xVelocity).to.equal(0);
+        });
+
+        it('should construct with a Y-velocity of 0', function () {
+            expect(this.velocity.yVelocity).to.equal(0);
+        });
     });
 
     describe('act()', function () {
@@ -65,4 +78,44 @@ describe('Velocity', function () {
             expect(this.boundingBox.setTop).to.have.been.calledWith(90);
         });
     });
+
+    describe('increaseX()', function () {
+        it('should increase X velocity by the delta amount', function () {
+            this.velocity.increaseX(5);
+
+            expect(this.velocity.xVelocity).to.equal(5);
+        });
+
+        it('should not affect Y velocity', function () {
+            this.velocity.increaseX(5);
+            expect(this.velocity.yVelocity).to.equal(0);
+        });
+
+        it('should not increase any further than maximumX', function () {
+            this.velocity.increaseX(this.maximumXVelocity + 1);
+
+            expect(this.velocity.xVelocity).to.equal(this.maximumXVelocity);
+        });
+    })
+
+    describe('increaseY', function () {
+        it('should increase Y velocity by the delta amount', function () {
+            this.velocity.increaseY(5);
+
+            expect(this.velocity.yVelocity).to.equal(5);
+        });
+
+        it('should not affect X velocity', function () {
+            this.velocity.increaseY(5);
+
+            expect(this.velocity.xVelocity).to.equal(0);
+        });
+
+        it('should not increase any further than maximumY', function () {
+            this.velocity.increaseY(this.maximumYVelocity + 1);
+
+            expect(this.velocity.yVelocity).to.equal(this.maximumYVelocity);
+        });
+    });
 });
+
