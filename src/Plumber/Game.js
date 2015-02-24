@@ -14,6 +14,7 @@ var _ = require('lodash'),
     CollisionDetector = require('./CollisionDetector'),
     Controls = require('./Controls'),
     DOMKeyListener = require('./DOMKeyListener'),
+    Gravity = require('./Gravity'),
     Momentum = require('./Momentum'),
     Pipe = require('./Pipe'),
     PipeFactory = require('./PipeFactory'),
@@ -31,13 +32,21 @@ function Game($document, $surface) {
 _.extend(Game.prototype, {
     start: function () {
         var game = this,
-            collisionDetector = new CollisionDetector(),
+            collisionDetector = new CollisionDetector(550),
             boundingBoxFactory = new BoundingBoxFactory(BoundingBox),
+            gravity = new Gravity(2),
             velocityFactory = new VelocityFactory(Velocity),
-            controls = new Controls(4),
+            controls = new Controls(4, 20),
             domKeyListener = new DOMKeyListener(controls, game.$document),
             momentum = new Momentum(0.8),
-            characterFactory = new CharacterFactory(boundingBoxFactory, velocityFactory, momentum, controls, Character),
+            characterFactory = new CharacterFactory(
+                boundingBoxFactory,
+                velocityFactory,
+                momentum,
+                gravity,
+                controls,
+                Character
+            ),
             rng = new RNG(Math),
             pipeFactory = new PipeFactory(boundingBoxFactory, rng, Pipe),
             world = new World(pipeFactory, characterFactory, collisionDetector, 550),
@@ -51,6 +60,7 @@ _.extend(Game.prototype, {
 
         setInterval(function () {
             momentum.act();
+            gravity.act();
             world.checkCollisions();
             renderer.render();
         }, 100);
