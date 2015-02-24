@@ -9,6 +9,7 @@
 var BoundingBoxFactory = require('../../../src/Plumber/BoundingBoxFactory'),
     CharacterFactory = require('../../../src/Plumber/CharacterFactory'),
     Controls = require('../../../src/Plumber/Controls'),
+    Gravity = require('../../../src/Plumber/Gravity'),
     Momentum = require('../../../src/Plumber/Momentum'),
     VelocityFactory = require('../../../src/Plumber/VelocityFactory');
 
@@ -17,6 +18,7 @@ describe('CharacterFactory', function () {
         this.boundingBoxFactory = sinon.createStubInstance(BoundingBoxFactory);
         this.Character = sinon.stub();
         this.controls = sinon.createStubInstance(Controls);
+        this.gravity = sinon.createStubInstance(Gravity);
         this.momentum = sinon.createStubInstance(Momentum);
         this.velocityFactory = sinon.createStubInstance(VelocityFactory);
 
@@ -24,6 +26,7 @@ describe('CharacterFactory', function () {
             this.boundingBoxFactory,
             this.velocityFactory,
             this.momentum,
+            this.gravity,
             this.controls,
             this.Character
         );
