@@ -16,8 +16,21 @@ _.extend(CollisionDetector.prototype, {
     detect: function (pipes, character) {
         _.each(pipes, function (pipe) {
             if (character.intersectsPipe(pipe)) {
-                if (character.getLeft() < pipe.getLeft()) {
+                if (
+                    character.getTop() < pipe.getTop() &&
+                    character.getTop() + character.getHeight() > pipe.getTop()
+                ) {
+                    character.setTop(pipe.getTop() - character.getHeight());
+                } else if (
+                    character.getLeft() < pipe.getLeft() &&
+                    character.getLeft() + character.getWidth() > pipe.getLeft()
+                ) {
                     character.setLeft(pipe.getLeft() - character.getWidth());
+                } else if (
+                    character.getLeft() < pipe.getRight() &&
+                    character.getRight() > pipe.getRight()
+                ) {
+                    character.setLeft(pipe.getRight());
                 }
             }
         });

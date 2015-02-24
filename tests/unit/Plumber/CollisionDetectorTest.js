@@ -41,6 +41,29 @@ describe('CollisionDetector', function () {
             expect(this.character.setLeft).not.to.have.been.called;
         });
 
+        it('should move the character back right moving left when its left edge overlaps pipe', function () {
+            this.character.getLeft.returns(200);
+            this.character.getWidth.returns(40);
+            this.character.getRight.returns(240);
+            this.pipe.getRight.returns(201);
+            this.character.intersectsPipe.returns(true);
+
+            this.detector.detect([this.pipe], this.character);
+
+            expect(this.character.setLeft).to.have.been.calledWith(201);
+        });
+
+        it('should move the character back up when its bottom edge overlaps the top of a pipe', function () {
+            this.character.getTop.returns(10);
+            this.character.getHeight.returns(40);
+            this.pipe.getTop.returns(49);
+            this.character.intersectsPipe.returns(true);
+
+            this.detector.detect([this.pipe], this.character);
+
+            expect(this.character.setTop).to.have.been.calledWith(9);
+        });
+
         it('should move the character back up when its bottom edge is below ground level', function () {
             this.character.getTop.returns(170);
             this.character.getHeight.returns(40);

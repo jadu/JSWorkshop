@@ -21,6 +21,10 @@ _.extend(Character.prototype, {
         return this.boundingBox.getLeft();
     },
 
+    getRight: function () {
+        return this.boundingBox.getRight();
+    },
+
     getTop: function () {
         return this.boundingBox.getTop();
     },
@@ -35,6 +39,10 @@ _.extend(Character.prototype, {
 
     setLeft: function (left) {
         this.boundingBox.setLeft(left);
+    },
+
+    setTop: function (left) {
+        this.boundingBox.setTop(left);
     }
 });
 

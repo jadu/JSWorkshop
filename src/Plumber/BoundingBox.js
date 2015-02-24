@@ -64,6 +64,10 @@ _.extend(BoundingBox.prototype, {
 
     setLeft: function (left) {
         this.x = left;
+    },
+
+    setTop: function (top) {
+        this.y = top;
     }
 });
 
